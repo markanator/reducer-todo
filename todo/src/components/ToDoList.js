@@ -3,6 +3,7 @@ import {initState, todoReducer} from '../reducers/TodoReducer';
 
 export default function ToDoList() {
     const [item,setItem] = useState("");
+    // deconstruct to get to todos array
     const [{todos},dispatch] = useReducer(todoReducer, initState);
 
     return (
@@ -21,6 +22,7 @@ export default function ToDoList() {
                     onChange={(e) => setItem(e.target.value)}/>
                     </label>
             </form><br/>
+            {/* Clear List */}
             <button
                 onClick={(e)=>{
                     e.preventDefault();
@@ -30,7 +32,7 @@ export default function ToDoList() {
                 Clear Completed
             </button>
 
-
+            {/* map through todos array */}
             {todos.map((t, index) =><div key = {t.id}
                 data = {t}
                 onClick = {() => dispatch({type: "TOGGLE_TODO", index})}

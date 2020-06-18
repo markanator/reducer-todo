@@ -25,6 +25,8 @@ export const todoReducer = (state, action) => {
                 ]
             };
         case "TOGGLE_TODO":
+            // sort through array and at a specific index, toggle completed
+            // if fail, return todo
             return {
                 todos: state.todos.map((t, index) => index === action.index
                         ? {...t,completed: !t.completed}
